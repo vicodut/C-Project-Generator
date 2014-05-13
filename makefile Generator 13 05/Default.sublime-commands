@@ -1,0 +1,22 @@
+[
+  {
+    "caption": "Generate Makefile",
+    "command": "generate_makefile"
+  },
+  {
+    "caption": "New C Project",
+    "command": "new_project"
+  },
+  {
+    "caption": "Create Project",
+    "command": "create_project"
+  },
+  {
+    "caption": "Copier",
+    "command": "copier"
+  },
+  {
+    "caption": "Fichiers",
+    "command": "fichiers"
+  }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "id": "tools",
+        "children":
+        [
+            {
+                "caption": "Projets C",
+                "mnemonic": "P",
+                "children":
+                [
+                    { "command": "create_project", "caption": "Create Project" },
+                    { "command": "generate_makefile", "caption": "Generate Makefile" }
+                ]
+            }
+        ]
+    },
+    {
+        "caption": "Preferences",
+        "mnemonic": "n",
+        "id": "preferences",
+        "children":
+        [
+            {
+                "caption": "Package Settings",
+                "mnemonic": "P",
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "Generate Makefile",
+                        "children":
+                        [
+		                    { "command": "menu", "caption": "Menu" },
+                            { "command": "new_project", "caption": "New Project" },
+		                    { "command": "generate_makefile", "caption": "Generate Makefile" }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
