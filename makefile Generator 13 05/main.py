@@ -24,9 +24,12 @@ projetFolder = ""
 system = sys.platform
 
 data_json = sublime.packages_path() + "/Makefile Generator/Data/Data.sublime-setting"
+
 with open(data_json) as data_file:
 	data = json.load(data_file)
+
 fic = data["startfolder"][0]["folder"]
+
 if fic == "User":
 	if system == "win32":
 		folder = "C:" + environ["HOMEPATH"]
@@ -38,31 +41,25 @@ else:
  	elif system == "linux":
  		folder = fic
 
-def echo(string):
+def printAndWrite(string):
 	global makefile
-	# sys.stdout.write(string)
 	print(string, end='')
 	makefile.write(string)
 
 def isNotIgnored(string):
-	# echo("\n=====================test ignore: " + string)
 	rep = 1
 	string = string + "\n"
 	fichier = path + ".makeignore"
 
 	if isfile(fichier):
-		# print("123")
+
 		miFile = open(path + '.makeignore', 'r+')
-		# print(miFile)
+
 		for line in miFile:
-			#echo("<" + line + ">")
-			#echo("{" + string + "}")
 			if line == string:
 				rep = 0
 		miFile.close()
-		#print (rep)
-	# if not rep:
-	# 	echo(" ignored ")
+
 	return rep
 
 class GenerateMakefileCommand(sublime_plugin.TextCommand):
@@ -77,38 +74,36 @@ class GenerateMakefileCommand(sublime_plugin.TextCommand):
 		global sourcesPath
 		global objectsPath
 		global makefile
+
 		path = ((self.view.file_name()).rsplit(os.sep, 2)[0]).replace(os.sep, '/') + "/"
 		name = (path).split("/")[-2]
-		headersP = "Header/"
-		sourcesP = "Source/"
-		objectsP = "Objects/"
+
 		headersPath = path + headersP
 		sourcesPath = path + sourcesP
 		objectsPath = path + objectsP
-		makefile = path + "makefile"
 
+		makefile = path + "makefile"
 		makefile = open(path + "makefile", 'w')
 
 		sources = [ (f.rsplit('.'))[0] for f in listdir(sourcesPath) if isfile(join(sourcesPath,f)) ]
+		printAndWrite("" + name + ':')
 
-		echo("" + name + ':')
 		for source in sources:
-			# pass
 			if isNotIgnored(source + ".c"):
-				echo(" " + objectsP + source + ".o")
-		echo("\n\tgcc $^ -o $@\n")
+				printAndWrite(" " + objectsP + source + ".o")
 
-		# echo("============================")
+		printAndWrite("\n\tgcc $^ -o $@\n")
 
 		for source in sources:
 			if isNotIgnored(source + ".c"):
 				headers = []
+
 				sourceFile = open(sourcesPath + source + ".c", 'r+')
-				
-				echo("\n" + objectsP + source + ".o: " + sourcesP + source + ".c")
+				printAndWrite("\n" + objectsP + source + ".o: " + sourcesP + source + ".c")
 				
 				# for line in sourceFile:
 				line = sourceFile.readline()
+
 				while not (line.startswith("#inc") or line.startswith("# inc")):
 					line = sourceFile.readline()
 
@@ -122,8 +117,9 @@ class GenerateMakefileCommand(sublime_plugin.TextCommand):
 				
 				for header in headers:
 					if isNotIgnored(header + ".h"):
-						echo(" " + headersP + header + ".h")
-				echo("\n\tgcc -c " + sourcesP + source + ".c -o " + objectsP + source + ".o\n")
+						printAndWrite(" " + headersP + header + ".h")
+				printAndWrite("\n\tgcc -c " + sourcesP + source + ".c -o " + objectsP + source + ".o\n")
+
 		makefile.close()
 
 
@@ -131,13 +127,14 @@ class CreateProjectCommand(sublime_plugin.WindowCommand):
 	def run(self):
 		print("NewProject")
 
-
 		self.window.show_input_panel('Name of New Project :', '',
             self.on_done, self.on_change, self.on_cancel)
+
 	def on_done(self, input):
 		global projectName
 		projectName = input
 		self.window.run_command('new_project')
+
 	def on_change(self, input):
 		pass
 
@@ -148,23 +145,29 @@ class ProjectCommand(sublime_plugin.WindowCommand):
 	def run(self):
 	   	print(projetFolder)
 	   	path = projetFolder + projectName  #!!!! PATH
-	   	#print(path)
+
 	   	try:
 	   		mkdir(path)
-	   		print("Le Projet \"" + projectName + "\" Créé")
+	   		print("Le Projet \"" + projectName + "\" a été créé")
+
 	   		sublime.status_message("Le Projet \"" + projectName + "\" Créé")
+
 	   		mkdir(path + "/Source")
 		   	mkdir(path + "/Header")
 		   	mkdir(path + "/Objects")
 		   	pathFile = path + "/Source/"
+
 		   	pathPackageData = sublime.packages_path() + "/Make Generator/Data/Default.c"
 		   	copy(pathPackageData, pathFile + projectName + ".c")
+
 	   	except (OSError):
 	   		sublime.status_message("Erreur création projet")
 	   		print ("Erreur création projet")
 	   		sublime.error_message("Erreur création projet : Le dossier \"" + projectName + "\" est déjà existant")
+
 	   	Main = pathFile + projectName + '.c'
 	   	print (Main)
+
 	   	self.window.open_file(Main)
 
 
@@ -175,6 +178,7 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 		
 		if not folder.endswith("/"):
 			folder += "/"
+
 		self.menu(-1)
 
 	def showPanel(self, itemsList):
@@ -184,17 +188,22 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 		global folder
 		global foldersList
 		global selectedItem
+
 		self.generateList(folder)
+
 		if arg == 0:
 			self.create(foldersList[arg])
+
 		elif arg == 1:
 			pass
+
 		else:
 			if not (arg == -1):
 				if foldersList[arg] == "..":
 					folder = folder.rsplit("/", 2)[0] + "/"
 				else: 
 					folder += foldersList[arg] + "/"
+
 				self.generateList(folder)
 	
 			self.showPanel(foldersList)
@@ -203,21 +212,26 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 	def result(self, arg):
 		global foldersList
 		global selectedItem
+
 		print(foldersList[arg])
+
 		selectedItem = arg
 		self.menu(selectedItem)
 
 	def create(self, arg):
 		global projetFolder
+
 		projetFolder = arg
 		print("Final" + arg)
+
 		self.window.run_command('create_files_project')
 
 
 
 	def generateList(self, folder):
 		global foldersList
-		foldersList = [folder] + ["Cancel"] + [".."] + [ (f.rsplit('/'))[0] for f in listdir(folder) if isdir(join(folder ,f)) ]
+
+		foldersList = ["Choose : [ \"" + folder + "\" ]"] + ["[ Cancel ]"] + ["[ .. ]"] + [ (f.rsplit('/'))[0] for f in listdir(folder) if isdir(join(folder ,f)) ]
 
 
 
@@ -253,3 +267,7 @@ class FichiersCommand(sublime_plugin.WindowCommand):
 		fic = data["folder"]
 		print(fic)
 			
+
+# ############# #
+# 	  TODO		#
+# ############# #
