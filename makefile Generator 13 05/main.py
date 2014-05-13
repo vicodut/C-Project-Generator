@@ -18,6 +18,8 @@ headersPath = path + headersP
 sourcesPath = path + sourcesP
 objectsPath = path + objectsP
 makefile = path + "makefile"
+projectName = ""
+projetFolder = "" 
 
 system = sys.platform
 
@@ -124,7 +126,7 @@ class GenerateMakefileCommand(sublime_plugin.TextCommand):
 				echo("\n\tgcc -c " + sourcesP + source + ".c -o " + objectsP + source + ".o\n")
 		makefile.close()
 
-global projectName
+
 class CreateProjectCommand(sublime_plugin.WindowCommand):
 	def run(self):
 		print("NewProject")
@@ -166,7 +168,7 @@ class ProjectCommand(sublime_plugin.WindowCommand):
 	   	self.window.open_file(Main)
 
 
-global projetFolder 
+
 class NewProjectCommand(sublime_plugin.WindowCommand):
 	def run(self):  
 		global folder
@@ -216,6 +218,15 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 	def generateList(self, folder):
 		global foldersList
 		foldersList = [folder] + ["Cancel"] + [".."] + [ (f.rsplit('/'))[0] for f in listdir(folder) if isdir(join(folder ,f)) ]
+
+
+
+# ################################# #
+# 	  FONCTIONS POUR LES TESTS		#
+#    ---------//////----------- 	#
+# 	     FUNCTION FOR TESTS			#
+# ################################# #
+
 
 
 class CopierCommand(sublime_plugin.WindowCommand):
