@@ -25,8 +25,6 @@ data_json = sublime.packages_path() + "/Makefile Generator/Data/Data.sublime-set
 with open(data_json) as data_file:
 	data = json.load(data_file)
 fic = data["startfolder"][0]["folder"]
-
-print("Fichier de départ : "+ fic)
 if fic == "User":
 	if system == "win32":
 		folder = "C:" + environ["HOMEPATH"]
@@ -49,7 +47,7 @@ def isNotIgnored(string):
 	rep = 1
 	string = string + "\n"
 	fichier = path + ".makeignore"
-	# print("$$$$$$$$$$$$$$$$$$$$$$$$$$" + fichier)
+
 	if isfile(fichier):
 		# print("123")
 		miFile = open(path + '.makeignore', 'r+')
@@ -126,7 +124,7 @@ class GenerateMakefileCommand(sublime_plugin.TextCommand):
 				echo("\n\tgcc -c " + sourcesP + source + ".c -o " + objectsP + source + ".o\n")
 		makefile.close()
 
-global NameProject
+global projectName
 class CreateProjectCommand(sublime_plugin.WindowCommand):
 	def run(self):
 		print("NewProject")
@@ -135,8 +133,8 @@ class CreateProjectCommand(sublime_plugin.WindowCommand):
 		self.window.show_input_panel('Name of New Project :', '',
             self.on_done, self.on_change, self.on_cancel)
 	def on_done(self, input):
-		global NameProject
-		NameProject = input
+		global projectName
+		projectName = input
 		self.window.run_command('new_project')
 	def on_change(self, input):
 		pass
@@ -144,41 +142,34 @@ class CreateProjectCommand(sublime_plugin.WindowCommand):
 	def on_cancel(self):
 	    pass
 
-class CreateFilesProjectCommand(sublime_plugin.WindowCommand):
+class ProjectCommand(sublime_plugin.WindowCommand):
 	def run(self):
-	   	print(ProjetFolder)
-	   	path = ProjetFolder + NameProject  #!!!! PATH
+	   	print(projetFolder)
+	   	path = projetFolder + projectName  #!!!! PATH
 	   	#print(path)
 	   	try:
 	   		mkdir(path)
-	   		print("Le Projet \"" + NameProject + "\" Créé")
-	   		sublime.status_message("Le Projet \"" + NameProject + "\" Créé")
+	   		print("Le Projet \"" + projectName + "\" Créé")
+	   		sublime.status_message("Le Projet \"" + projectName + "\" Créé")
 	   		mkdir(path + "/Source")
 		   	mkdir(path + "/Header")
 		   	mkdir(path + "/Objects")
-		   	PathFichier = path + "/Source/"
-		   	PathPackageDefault = sublime.packages_path() + "/Makefile Generator/Data/Default.c"
-		   	copyfile(PathPackageDefault, PathFichier + NameProject + ".c")
+		   	pathFile = path + "/Source/"
+		   	pathPackageData = sublime.packages_path() + "/Make Generator/Data/Default.c"
+		   	copy(pathPackageData, pathFile + projectName + ".c")
 	   	except (OSError):
 	   		sublime.status_message("Erreur création projet")
 	   		print ("Erreur création projet")
-	   		sublime.error_message("Erreur création projet : Le dossier \"" + NameProject + "\" est déjà existant")
-	   	Main = PathFichier + NameProject + '.c'
+	   		sublime.error_message("Erreur création projet : Le dossier \"" + projectName + "\" est déjà existant")
+	   	Main = pathFile + projectName + '.c'
 	   	print (Main)
 	   	self.window.open_file(Main)
 
 
-global ProjetFolder 
+global projetFolder 
 class NewProjectCommand(sublime_plugin.WindowCommand):
 	def run(self):  
 		global folder
-		# try:
-		# 	folder = environ["HOME"]
-		# except Exception:
-		# 	try:
-		# 		folder = environ["HOMEPATH"]
-		# 	except Exception:
-		# 		print("Variables d'environnement")
 		
 		if not folder.endswith("/"):
 			folder += "/"
@@ -215,8 +206,8 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 		self.menu(selectedItem)
 
 	def create(self, arg):
-		global ProjetFolder
-		ProjetFolder = arg
+		global projetFolder
+		projetFolder = arg
 		print("Final" + arg)
 		self.window.run_command('create_files_project')
 
@@ -230,14 +221,14 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 class CopierCommand(sublime_plugin.WindowCommand):
 	def run(self):
 		print("Hello")
-		PathPackageDefault = "C:/Users/Victor/Documents/data.json"
+		pathPackageData = "C:/Users/Victor/Documents/data.json"
 		system = sys.platform
 		print(system)
 		
 		fichier = {}
-		fichier["folder"] = PathPackageDefault
+		fichier["folder"] = pathPackageData
 		print(json.dumps(fichier, indent=4))
-		with open(PathPackageDefault, 'w', encoding='utf-8') as f:
+		with open(pathPackageData, 'w', encoding='utf-8') as f:
 			json.dump(fichier, f, indent=4)
 
 		#self.view.run_command('by')
