@@ -157,8 +157,9 @@ class ProjectCommand(sublime_plugin.WindowCommand):
 		   	mkdir(path + "/Objects")
 		   	pathFile = path + "/Source/"
 
-		   	pathPackageData = sublime.packages_path() + "/Make Generator/Data/Default.c"
-		   	copy(pathPackageData, pathFile + projectName + ".c")
+		   	pathPackageData = sublime.packages_path() + "/Makefile Generator/Data/Default.c"
+		   	print(pathPackageData)
+		   	copyfile(pathPackageData, pathFile + projectName + ".c")
 
 	   	except (OSError):
 	   		sublime.status_message("Erreur création projet")
@@ -224,14 +225,14 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 		projetFolder = arg
 		print("Final" + arg)
 
-		self.window.run_command('create_files_project')
+		self.window.run_command('project')
 
 
 
 	def generateList(self, folder):
 		global foldersList
 
-		foldersList = ["Choose : [ \"" + folder + "\" ]"] + ["[ Cancel ]"] + ["[ .. ]"] + [ (f.rsplit('/'))[0] for f in listdir(folder) if isdir(join(folder ,f)) ]
+		foldersList = [folder] + ["[ Cancel ]"] + [".."] + [ (f.rsplit('/'))[0] for f in listdir(folder) if isdir(join(folder ,f)) ]
 
 
 
