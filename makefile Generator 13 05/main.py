@@ -1,5 +1,4 @@
 import sublime, sublime_plugin
-import sys
 from os import listdir, mkdir, environ
 from os.path import isfile, isdir, join
 import os
@@ -222,7 +221,7 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 	def create(self, arg):
 		global projetFolder
 
-		projetFolder = arg
+		projetFolder = folder
 		print("Final" + arg)
 
 		self.window.run_command('project')
@@ -236,7 +235,7 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 
 
 
-# ################################# #
+# ################################# # 
 # 	  FONCTIONS POUR LES TESTS		#
 #    ---------//////----------- 	#
 # 	     FUNCTION FOR TESTS			#
