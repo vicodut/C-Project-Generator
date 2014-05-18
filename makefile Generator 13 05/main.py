@@ -189,7 +189,7 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 		global foldersList
 		global selectedItem
 
-		self.generateList(folder)
+		self.generateTest(folder)
 
 		if arg == 0:
 			self.create(foldersList[arg])
@@ -204,7 +204,7 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 				else: 
 					folder += foldersList[arg] + "/"
 
-				self.generateList(folder)
+				self.generateTest(folder)
 	
 			self.showPanel(foldersList)
 
@@ -233,6 +233,58 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 
 		foldersList = [folder] + ["[ Cancel ]"] + [".."] + [ (f.rsplit('/'))[0] for f in listdir(folder) if isdir(join(folder ,f)) ]
 
+	def generateTest(self, folder):
+		global foldersList
+
+		pathPackageData = os.path.realpath(folder)
+		# print("Path : " + pathPackageData)
+		exist = os.path.exists(pathPackageData)
+		# print(exist)
+		hello = os.lstat(pathPackageData)
+		# print(hello.st_size)
+		# print("#########")
+
+		tabstat = []
+		tablstat = []
+		for f in listdir(folder):
+
+			if os.path.exists(folder + f):
+
+				testWstat = os.stat(folder + f)
+				testWlstat = os.lstat(folder + f)
+				if testWstat.st_size == 0:
+					#print("\%\%\%\%\%\% " + f)
+					tabstat.append(f)
+				# print(">>>>>Test stat: ")
+				# print(tabstat)
+
+				if testWlstat.st_size == 0:
+					#print("\%\%\%\%\%\% " + f)
+					tablstat.append(f)
+				# print(">>>>>Test lstat: ")
+				# print(tablstat)
+		# print(">>>>>Test stat: ")
+		# print(tabstat)
+		# print(">>>>>Test lstat: ")
+		# print(tablstat)
+
+
+		# print(tablstat)
+		for i in range(len(tabstat)):
+			#print(tablstat[i])
+
+			tablstat.remove(tabstat[i])
+
+		# print(tablstat)	#print( hello.st_size)
+		foldersList = [folder] + ["[ Cancel ]"] + [".."] + [ (f.rsplit('/'))[0] for f in listdir(folder) if isdir(join(folder ,f)) ]
+		# print(foldersList)
+
+		for i in range(len(tablstat)):
+			#print(tablstat[i])
+
+			foldersList.remove(tablstat[i])
+
+
 
 
 # ################################# # 
@@ -245,18 +297,57 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 
 class CopierCommand(sublime_plugin.WindowCommand):
 	def run(self):
-		print("Hello")
-		pathPackageData = "C:/Users/Victor/Documents/data.json"
-		system = sys.platform
-		print(system)
-		
-		fichier = {}
-		fichier["folder"] = pathPackageData
-		print(json.dumps(fichier, indent=4))
-		with open(pathPackageData, 'w', encoding='utf-8') as f:
-			json.dump(fichier, f, indent=4)
+		print("\n")
+		pathPackageData = os.path.realpath("C:\\Users\\Victor")
+		print("Path : " + pathPackageData)
+		exist = os.path.exists(pathPackageData)
+		print(exist)
+		hello = os.lstat(pathPackageData)
+		print(hello.st_size)
+		print("#########")
 
-		#self.view.run_command('by')
+		tabstat = []
+		tablstat = []
+		for f in listdir("C:\\Users\\Victor"):
+
+			if os.path.exists("C:/Users/Victor/" + f):
+
+				testWstat = os.stat("C:/Users/Victor/" + f)
+				testWlstat = os.lstat("C:/Users/Victor/" + f)
+				if testWstat.st_size == 0:
+					#print("\%\%\%\%\%\% " + f)
+					tabstat.append(f)
+				# print(">>>>>Test stat: ")
+				# print(tabstat)
+
+				if testWlstat.st_size == 0:
+					#print("\%\%\%\%\%\% " + f)
+					tablstat.append(f)
+				# print(">>>>>Test lstat: ")
+				# print(tablstat)
+		print(">>>>>Test stat: ")
+		print(tabstat)
+		print(">>>>>Test lstat: ")
+		print(tablstat)
+
+
+		print(tablstat)
+		for i in range(len(tabstat)):
+			#print(tablstat[i])
+
+			tablstat.remove(tabstat[i])
+
+		print(tablstat)	#print( hello.st_size)
+		foldersList = ["C:/Users/Victor/"] + ["[ Cancel ]"] + [".."] + [ (f.rsplit('/'))[0] for f in listdir("C:/Users/Victor/") if isdir(join("C:/Users/Victor/" ,f)) ]
+		print(foldersList)
+
+		for i in range(len(tablstat)):
+			#print(tablstat[i])
+
+			foldersList.remove(tablstat[i])
+
+
+		sublime.set_timeout(lambda: self.window.show_quick_panel(foldersList,self.run), 10)
 
 
 class FichiersCommand(sublime_plugin.WindowCommand):
