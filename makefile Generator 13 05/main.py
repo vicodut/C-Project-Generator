@@ -189,7 +189,7 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 		global foldersList
 		global selectedItem
 
-		self.generateTest(folder)
+		self.generateList(folder)
 
 		if arg == 0:
 			self.create(foldersList[arg])
@@ -204,7 +204,7 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 				else: 
 					folder += foldersList[arg] + "/"
 
-				self.generateTest(folder)
+				self.generateList(folder)
 	
 			self.showPanel(foldersList)
 
@@ -229,11 +229,6 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 
 
 	def generateList(self, folder):
-		global foldersList
-
-		foldersList = [folder] + ["[ Cancel ]"] + [".."] + [ (f.rsplit('/'))[0] for f in listdir(folder) if isdir(join(folder ,f)) ]
-
-	def generateTest(self, folder):
 		global foldersList
 
 		pathPackageData = os.path.realpath(folder)
