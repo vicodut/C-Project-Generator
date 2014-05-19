@@ -31,14 +31,15 @@ fic = data["startfolder"][0]["folder"]
 
 if fic == "User":
 	if system == "win32":
-		folder = "C:" + environ["HOMEPATH"]
+		defaultFolder = "C:" + environ["HOMEPATH"]
 	elif system == "linux":
-		folder = environ["HOME"]
+		defaultFolder = environ["HOME"]
 else:
  	if system == "win32":
- 		folder = "C:" + fic
+ 		defaultFolder = "C:" + fic
  	elif system == "linux":
- 		folder = fic
+ 		defaultFolder = fic
+folder = defaultFolder
 
 def printAndWrite(string):
 	global makefile
@@ -173,8 +174,9 @@ class ProjectCommand(sublime_plugin.WindowCommand):
 
 
 class NewProjectCommand(sublime_plugin.WindowCommand):
-	def run(self):  
-		global folder
+	def run(self):
+		global folder  
+		folder = defaultFolder
 		
 		if not folder.endswith("/"):
 			folder += "/"
@@ -232,50 +234,28 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 		global foldersList
 
 		pathPackageData = os.path.realpath(folder)
-		# print("Path : " + pathPackageData)
-		exist = os.path.exists(pathPackageData)
-		# print(exist)
-		hello = os.lstat(pathPackageData)
-		# print(hello.st_size)
-		# print("#########")
 
 		tabstat = []
 		tablstat = []
-		for f in listdir(folder):
 
+		for f in listdir(folder):
 			if os.path.exists(folder + f):
 
 				testWstat = os.stat(folder + f)
 				testWlstat = os.lstat(folder + f)
+
 				if testWstat.st_size == 0:
-					#print("\%\%\%\%\%\% " + f)
 					tabstat.append(f)
-				# print(">>>>>Test stat: ")
-				# print(tabstat)
 
 				if testWlstat.st_size == 0:
-					#print("\%\%\%\%\%\% " + f)
 					tablstat.append(f)
-				# print(">>>>>Test lstat: ")
-				# print(tablstat)
-		# print(">>>>>Test stat: ")
-		# print(tabstat)
-		# print(">>>>>Test lstat: ")
-		# print(tablstat)
 
-
-		# print(tablstat)
 		for i in range(len(tabstat)):
-			#print(tablstat[i])
-
 			tablstat.remove(tabstat[i])
 
-		# print(tablstat)	#print( hello.st_size)
 		foldersList = [folder] + ["[ Cancel ]"] + [".."] + [ (f.rsplit('/'))[0] for f in listdir(folder) if isdir(join(folder ,f)) ]
-		# print(foldersList)
 
 		for i in range(len(tablstat)):
-			#print(tablstat[i])
 
 			foldersList.remove(tablstat[i])
 
