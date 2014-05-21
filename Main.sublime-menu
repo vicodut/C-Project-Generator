@@ -27,7 +27,7 @@
                 "children":
                 [
                     {
-                        "caption": "Generate Makefile",
+                        "caption": "C Projets Generator",
                         "children":
                         [
 		                    { "command": "menu", "caption": "Menu" },

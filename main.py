@@ -22,7 +22,7 @@ projetFolder = ""
 
 system = sys.platform
 
-data_json = sublime.packages_path() + "/Makefile Generator/Data/Data.sublime-setting"
+data_json = sublime.packages_path() + "/C Projects Generator/Data/Data.sublime-setting"
 
 with open(data_json) as data_file:
 	data = json.load(data_file)
@@ -157,7 +157,7 @@ class ProjectCommand(sublime_plugin.WindowCommand):
 		   	mkdir(path + "/Objects")
 		   	pathFile = path + "/Source/"
 
-		   	pathPackageData = sublime.packages_path() + "/Makefile Generator/Data/Default.c"
+		   	pathPackageData = sublime.packages_path() + "/C Projects Generator/Data/Default.c"
 		   	print(pathPackageData)
 		   	copyfile(pathPackageData, pathFile + projectName + ".c")
 
@@ -250,7 +250,7 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 				if testWlstat.st_size == 0:
 					tablstat.append(f)
 
-		for i in range(len(tabstat)):
+		for i in range(1,len(tabstat)):
 			tablstat.remove(tabstat[i])
 
 		foldersList = [folder] + ["[ Cancel ]"] + [".."] + [ (f.rsplit('/'))[0] for f in listdir(folder) if isdir(join(folder ,f)) ]
@@ -272,58 +272,7 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 
 class CopierCommand(sublime_plugin.WindowCommand):
 	def run(self):
-		print("\n")
-		pathPackageData = os.path.realpath("C:\\Users\\Victor")
-		print("Path : " + pathPackageData)
-		exist = os.path.exists(pathPackageData)
-		print(exist)
-		hello = os.lstat(pathPackageData)
-		print(hello.st_size)
-		print("#########")
-
-		tabstat = []
-		tablstat = []
-		for f in listdir("C:\\Users\\Victor"):
-
-			if os.path.exists("C:/Users/Victor/" + f):
-
-				testWstat = os.stat("C:/Users/Victor/" + f)
-				testWlstat = os.lstat("C:/Users/Victor/" + f)
-				if testWstat.st_size == 0:
-					#print("\%\%\%\%\%\% " + f)
-					tabstat.append(f)
-				# print(">>>>>Test stat: ")
-				# print(tabstat)
-
-				if testWlstat.st_size == 0:
-					#print("\%\%\%\%\%\% " + f)
-					tablstat.append(f)
-				# print(">>>>>Test lstat: ")
-				# print(tablstat)
-		print(">>>>>Test stat: ")
-		print(tabstat)
-		print(">>>>>Test lstat: ")
-		print(tablstat)
-
-
-		print(tablstat)
-		for i in range(len(tabstat)):
-			#print(tablstat[i])
-
-			tablstat.remove(tabstat[i])
-
-		print(tablstat)	#print( hello.st_size)
-		foldersList = ["C:/Users/Victor/"] + ["[ Cancel ]"] + [".."] + [ (f.rsplit('/'))[0] for f in listdir("C:/Users/Victor/") if isdir(join("C:/Users/Victor/" ,f)) ]
-		print(foldersList)
-
-		for i in range(len(tablstat)):
-			#print(tablstat[i])
-
-			foldersList.remove(tablstat[i])
-
-
-		sublime.set_timeout(lambda: self.window.show_quick_panel(foldersList,self.run), 10)
-
+		print("hello")
 
 class FichiersCommand(sublime_plugin.WindowCommand):
 	def run(self):
