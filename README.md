@@ -10,12 +10,12 @@ The project must have this file hierarchie:
 
 #####Project Folder:#####
 
-    *  __Source/__ 
-     *  _Folder which contain sources files_
-     * _Ex.: file1.c_
-     * _file2.c_
-    *  __Header/__
-    *  __Objects/__
+*  __Source/__ 
+ *  _Folder which contain sources files_
+ * _Ex.: file1.c_
+ * _file2.c_
+*  __Header/__
+*  __Objects/__
 
 
 Open  Command Palette : `CTRL+Shift+P` execute `Generate Make`.
