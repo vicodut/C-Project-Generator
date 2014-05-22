@@ -9,8 +9,7 @@ A plug-in for Sublime-Text 3 which allows the creation and management of project
 The project must have this file hierarchie:
 
 \-- Project Folder 
-
-\---- Source 
+---- Source 
 
 \------ Folder which contain sources files
 \------ Ex.: file1.c
