@@ -10,9 +10,9 @@ The project must have this file hierarchie:
 
 * Project Folder:
  *  __Source/__ 
-   *  _Folder which contain sources files_
-   *  ___Ex.:__file1.c__
-   * _file2.c_
+   *  _Folder which contain sources files
+   *  Ex.:file1.c
+   * file2.c_
  *  _Header/__
  *  __Objects/__
 
