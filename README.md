@@ -14,4 +14,5 @@ The project must have this file hierarchie:
 \------ file2.c
 \---- Header/
 \----Objects/
+
 Open  Command Palette : "CTRL+Shift+P" execute "Generate Make".
