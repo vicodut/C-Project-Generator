@@ -16,4 +16,4 @@ Project Folder <br \>
 - - __Header/__<br \>
 - - __Objects/__<br \>
 
-Open  Command Palette : "CTRL+Shift+P" execute "Generate Make".
+Open  Command Palette : `CTRL+Shift+P` execute "Generate Make".
