@@ -11,7 +11,7 @@ The project must have this file hierarchie:
 Project Folder <br \>
 - - __Source/__ <br \>
 - - - - _Folder which contain sources files_<br \>
-- - - - _Ex.: file1.c_<br \>
+- - - - ___Ex.:__ file1.c_<br \>
 - - - - _file2.c_<br \>
 - - __Header/__<br \>
 - - __Objects/__<br \>
