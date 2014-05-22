@@ -19,14 +19,5 @@ The project must have this file hierarchie:
 
 
 
-         - Source/
-         - - - Folder which contain sources files
-         - - - Ex.: file1.c
-         - - - file2.c
-         - Header/
-         - Objects/
-
-
-
 Open  Command Palette : `CTRL+Shift+P` execute `Generate Make`.
 
