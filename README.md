@@ -18,12 +18,13 @@ The project must have this file hierarchie:
 *  __Objects/__
 
 
+
          - Source/
          - - - Folder which contain sources files
          - - - Ex.: file1.c
          - - - file2.c
          - Header/
-         - Objects/_
+         - Objects/
 
 
 
