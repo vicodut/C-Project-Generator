@@ -8,7 +8,7 @@ A plug-in for Sublime-Text 3 which allows the creation and management of project
 ###Condition:
 The project must have this file hierarchie:
 
-#####Project Folder:#####
+#####Project Folder/ :#####
 1ere version
 *  __Source/__ 
  *  _Folder which contain sources files_
@@ -32,4 +32,4 @@ The project must have this file hierarchie:
 
 
 Open  Command Palette : `CTRL+Shift+P` execute `Generate Make`.
-
+This command will create the file `makefile.in` at the root of the project here: `Project Folder/`.
