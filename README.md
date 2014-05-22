@@ -1,12 +1,12 @@
 C-Project-Generator
 ===================
 
-A plug-in for Sublime-Text 3 which allows the creation and management of project C.
+A plug-in for Sublime-Text 3 which allows the creation and management of C projects.
 
 ##Create a Make file :
 
 ###Condition:
-The project must have this file hierarchie:
+The project must have this file hierarchy:
 
 #####Project Folder/ :#####
 1ere version
@@ -35,3 +35,26 @@ Open  Command Palette (in windows: `CTRL+Shift+P`) and  execute `Generate Make`.
 This command will create the file `makefile.in` at the root of the project here: `Project Folder/`.
 
 ##Create a New C Project :
+Open  Command Palette (in windows: `CTRL+Shift+P`) and  execute `Create C Project`.
+
+An input box will apear on the bottom of Sublime, just give a name to your project and choose the folder of his creation.
+
+####File hierarchy of the new project :####
+
+#####Name of the Project/ :#####
+1ere version
+*  __Source/__ 
+ *  'Name of the Project.c'
+*  __Header/__
+*  __Objects/__
+
+
+
+2eme version
+
+
+         - Source/
+         - - - 'Name of the Project.c'
+         - Header/
+         - Objects/
+
