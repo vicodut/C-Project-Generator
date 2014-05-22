@@ -9,11 +9,11 @@ A plug-in for Sublime-Text 3 which allows the creation and management of project
 The project must have this file hierarchie:
 
 Project Folder <br \>
-- - Source/ <br \>
-- - - - Folder which contain sources files<br \>
-- - - - Ex.: file1.c<br \>
-- - - - file2.c<br \>
-- - Header/<br \>
-- - Objects/<br \>
+- - __Source/__ <br \>
+- - - - _Folder which contain sources files_<br \>
+- - - - _Ex.: file1.c_<br \>
+- - - - _file2.c_<br \>
+- - __Header/__<br \>
+- - __Objects/__<br \>
 
 Open  Command Palette : "CTRL+Shift+P" execute "Generate Make".
