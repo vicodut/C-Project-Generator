@@ -31,5 +31,7 @@ The project must have this file hierarchie:
 
 
 
-Open  Command Palette : `CTRL+Shift+P` execute `Generate Make`.
+Open  Command Palette (in windows: `CTRL+Shift+P`) and  execute `Generate Make`.
 This command will create the file `makefile.in` at the root of the project here: `Project Folder/`.
+
+##Create a New C Project :
