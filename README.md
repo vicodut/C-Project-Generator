@@ -35,7 +35,7 @@ Open  Command Palette (in windows: `CTRL+Shift+P`) and  execute `Generate Make`.
 This command will create the file `makefile.in` at the root of the project here: `Project Folder/`.
 
 ##Create a New C Project :
-Open  Command Palette (in windows: `CTRL+Shift+P`) and  execute `Create C Project`.
+Open  Command Palette (in windows: `CTRL+Shift+P`) and  execute `Create C Project`. C Projects created by this command are optimised to work with the command: `Generate Make` of this plug-in.
 
 An input box will appear on the bottom of Sublime, just give a name to your project and choose the folder of his creation.
 
