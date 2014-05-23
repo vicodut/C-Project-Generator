@@ -8,8 +8,9 @@ A plug-in for Sublime-Text 3 which allows the creation and management of C proje
 ###Condition:
 The project must have this file hierarchy:
 
-#####Project\_Folder/ #####
 1ere version
+
+#####Project\_Folder/ #####
 *  __Source/__ 
  *  _Folder which contain sources files_
  * _Ex.: file1.c_
@@ -21,7 +22,7 @@ The project must have this file hierarchy:
 
 2eme version
 
-
+         Project_Folder/
          - Source/
          - - - Folder which contain sources files
          - - - Ex.: file1.c
@@ -41,8 +42,10 @@ An input box will appear on the bottom of Sublime, just give a name to your proj
 
 ####File hierarchy of the new project :####
 
-#####Name\_of\_the\_Project/ #####
+
 1ere version
+
+#####Name\_of\_the\_Project/ #####
 *  __Source/__ 
  *  'Name of the Project.c'
 *  __Header/__
@@ -52,7 +55,7 @@ An input box will appear on the bottom of Sublime, just give a name to your proj
 
 2eme version
 
-
+         Project_Folder/
          - Source/
          - - - 'Name of the Project.c'
          - Header/
