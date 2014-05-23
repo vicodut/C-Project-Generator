@@ -55,7 +55,7 @@ An input box will appear on the bottom of Sublime, just give a name to your proj
 
 2eme version
 
-         Project_Folder/
+         Name_of_the_Project/
          - Source/
          - - - 'Name of the Project.c'
          - Header/
