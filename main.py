@@ -262,27 +262,4 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 
 
 
-# ################################# # 
-# 	  FONCTIONS POUR LES TESTS		#
-#    ---------//////----------- 	#
-# 	     FUNCTION FOR TESTS			#
-# ################################# #
 
-
-
-class CopierCommand(sublime_plugin.WindowCommand):
-	def run(self):
-		print("hello")
-
-class FichiersCommand(sublime_plugin.WindowCommand):
-	def run(self):
-		data_json = "C:/Users/Victor/Documents/data.json"
-		with open(data_json) as data_file:
-			data = json.load(data_file)
-		fic = data["folder"]
-		print(fic)
-			
-
-# ############# #
-# 	  TODO		#
-# ############# #

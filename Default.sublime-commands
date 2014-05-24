@@ -10,13 +10,5 @@
   {
     "caption": "Create Project",
     "command": "create_project"
-  },
-  {
-    "caption": "Copier",
-    "command": "copier"
-  },
-  {
-    "caption": "Fichiers",
-    "command": "fichiers"
   }
 ]
