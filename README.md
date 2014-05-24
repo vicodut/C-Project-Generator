@@ -38,7 +38,7 @@ An input box will appear on the bottom of Sublime, just give a name to your proj
 
 
 #### Start folder for choose project location :####
-By default the reachearche start folder is the USER path (`C:/Users/Name` for windows, `/home/Name` for linux). If you have a specific location where you want to save your project without the need each time to return by the navigation panel, you just have to create `Data.sublime-setting` in the data folder of _C Project Generator_ (`CTRL + Shift + P` on windows execute `browse package` and find the folder of _C Project Generator_) and write (Replace FOLDER by the folder you want to) :
+By default the start folder in the navigation panel is the USER path (`C:/Users/Name` for windows, `/home/Name` for linux). If you have a specific location where you want to save your project without the need each time to return by the navigation panel, you just have to create `Data.sublime-setting` in the data folder of _C Project Generator_ (`CTRL + Shift + P` on windows execute `browse package` and find the folder of _C Project Generator_) and write it with (Replace FOLDER by the folder you want to) :
 
 	{
 		"folder": "FOLDER"
