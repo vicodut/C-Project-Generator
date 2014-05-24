@@ -46,7 +46,7 @@ By default the start folder in the navigation panel is the USER path (`C:/Users/
 	
 	
 __Example :__<br />
-If i want to start at : `C:/Users/MyName/Documents/Projects` i must put:
+If I want to start at : `C:/Users/MyName/Documents/Projects` I must put:
 
 
 	{
