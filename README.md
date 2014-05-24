@@ -53,10 +53,10 @@ If i want to start at : `C:/Users/MyName/Documents/Projects` i must put:
 
 
 	{
-	"startfolder": 
-	[{
-	"folder": "C:/Users/MyName/Documents/Projects"
-	}]
+		"startfolder": 
+		[{
+			"folder": "C:/Users/MyName/Documents/Projects"
+		}]
 	}
 	
 
