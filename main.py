@@ -5,7 +5,6 @@ import os
 from shutil import copyfile
 import shutil
 import sys
-import json
 from pprint import pprint
 
 name = "Cash"
@@ -22,23 +21,14 @@ projetFolder = ""
 
 system = sys.platform
 
-data_json = sublime.packages_path() + "/C Projects Generator/Data/Data.sublime-setting"
+settings = sublime.load_settings("Data-CPG.sublime-setting")
+  
+if system == "win32":
+	folder = "C:" + environ["HOMEPATH"]
+elif system == "linux":
+	folder = environ["HOME"]
 
-with open(data_json) as data_file:
-	data = json.load(data_file)
-
-fic = data["startfolder"][0]["folder"]
-
-if fic == "User":
-	if system == "win32":
-		defaultFolder = "C:" + environ["HOMEPATH"]
-	elif system == "linux":
-		defaultFolder = environ["HOME"]
-else:
- 	if system == "win32":
- 		defaultFolder = "C:" + fic
- 	elif system == "linux":
- 		defaultFolder = fic
+defaultFolder = settings.get("folder", folder)
 folder = defaultFolder
 
 def printAndWrite(string):
@@ -82,8 +72,7 @@ class GenerateMakefileCommand(sublime_plugin.TextCommand):
 		sourcesPath = path + sourcesP
 		objectsPath = path + objectsP
 
-		makefile = path + "makefile"
-		makefile = open(path + "makefile", 'w')
+		makefile = open(path + "makefile.in", 'w')
 
 		sources = [ (f.rsplit('.'))[0] for f in listdir(sourcesPath) if isfile(join(sourcesPath,f)) ]
 		printAndWrite("" + name + ':')
@@ -258,8 +247,6 @@ class NewProjectCommand(sublime_plugin.WindowCommand):
 		for i in range(len(tablstat)):
 
 			foldersList.remove(tablstat[i])
-
-
 
 
 
