@@ -43,14 +43,14 @@ By default the reachearche start folder is the USER path (`C:/Users/Name` for wi
 	{
 		"startfolder": 
 		[{
-			"folder": "C:/Users/MyName/Documents/Projects"
+			"folder": "User"
 		}]
 	}
 	
 	
 User is default value which will return the user path of the system in the plug-in. So to change the path you must put your path to the folder you need.
 
-Example:
+__Example:__
 If i want to start at : `C:/Users/MyName/Documents/Projects` i must put:
 
 
