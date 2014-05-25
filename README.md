@@ -5,7 +5,7 @@ A plug-in for Sublime-Text 3 which allows the creation and management of C proje
 
 
 ##Install C Projects Generator :
-Clone or [download](https://github.com/ysiguman/C-Project-Generator/archive/master.zip) the Master, unzip the file, rename the folder by : `C Projects Generator` and copy it in the package folder of Sublime text : `CTRL + Shift + P` + _browse package_.
+Clone or [download](https://github.com/ysiguman/C-Project-Generator/archive/master.zip) git repo into your packages folder ( `CTRL + Shift + P` + _browse package_ ) with the name : `C Projects Generator` .
 ##Create a Make file :
 
 ###Condition:
