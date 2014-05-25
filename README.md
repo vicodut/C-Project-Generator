@@ -5,7 +5,7 @@ A plug-in for Sublime-Text 3 which allows the creation and management of C proje
 
 
 ##Install C Projects Generator :
-Download the Master, unzip the file, rename the folder by : `C Projects Generator` and copy it in the package folder of Sublime text : `CTRL + Shift + P` + _browse package_.
+Clone or [download](https://github.com/ysiguman/C-Project-Generator/archive/master.zip) the Master, unzip the file, rename the folder by : `C Projects Generator` and copy it in the package folder of Sublime text : `CTRL + Shift + P` + _browse package_.
 ##Create a Make file :
 
 ###Condition:
@@ -22,11 +22,11 @@ The project must have this file hierarchy:
 
 
 
-Open  Command Palette (in windows: `CTRL+Shift+P`) and  execute `Generate Make`.
+Open  Command Palette ( in windows: `CTRL+Shift+P` ) and  execute `Generate Make`.
 This command will create the file `makefile.in` at the root of the project here: `Project Folder/`.
 
 ##Create a New C Project :
-Open  Command Palette (in windows: `CTRL+Shift+P`) and  execute `Create C Project`. C Projects created by this command are optimised to work with the command: `Generate Make` of this plug-in.
+Open  Command Palette ( in windows: `CTRL+Shift+P` ) and  execute `Create C Project`. C Projects created by this command are optimised to work with the command: `Generate Make` of this plug-in.
 
 An input box will appear on the bottom of Sublime, just give a name to your project and choose the folder of his creation.
 
@@ -41,7 +41,7 @@ An input box will appear on the bottom of Sublime, just give a name to your proj
 
 
 #### Start folder for choose project location :####
-By default the start folder in the navigation panel is the USER path (`C:/Users/Name` for windows, `/home/Name` for linux). If you have a specific location where you want to save your project without the need each time to return by the navigation panel, you just have to create `Data.sublime-setting` in the data folder of _C Project Generator_ (`CTRL + Shift + P` on windows execute `browse package` and find the folder of _C Project Generator_) and write it with (Replace FOLDER by the folder you want to) :
+By default the start folder in the navigation panel is the USER path ( `C:/Users/Name` for windows, `/home/Name` for linux ). If you have a specific location where you want to save your project without the need each time to return by the navigation panel, you just have to create `Data.sublime-setting` in the data folder of _C Project Generator_ ( `CTRL + Shift + P` on windows execute `browse package` and find the folder of _C Project Generator_ ) and write it with ( Replace FOLDER by the folder you want to ) :
 
 	{
 		"folder": "FOLDER"
